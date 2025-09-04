@@ -1,0 +1,23 @@
+@MUSH
+#char 110
+#color i purple
+#cycle 10
+:loop
+#char 110
+/i/i/i
+#char 239
+/i/i
+#if not canput n skip
+#put n purple object
+#pset n char 42
+#pset n step n
+#load n objs\spore
+:skip
+#if not canput s loop
+#put s purple object
+#pset s char 42
+#pset s step s
+#load s objs\spore
+#loop
+:fire
+#die

@@ -1,0 +1,33 @@
+@P_GUST
+:loop
+#color i cyan
+#char 42
+#run :tick
+/i
+#char 15
+#run :tick
+/i
+#color i gray
+#char 42
+#run :tick
+/i
+#char 15
+#run :tick
+/i
+#loop
+:tick
+#send /n wind_n
+#send /s wind_s
+#send /e wind_e
+#send /w wind_w
+#end
+:touch
+#if not ELEMENT is 4 loop
+:enter
+#lock
+#color i dkgray
+#char 43
+/i
+#char 249
+/i
+#die

@@ -1,0 +1,6 @@
+{
+  "chr_in": "chr_*.png",
+  "chr_out": "../*.CHR",
+  "pal_in": "pal_*.png",
+  "pal_out": "../*.PAL"
+}

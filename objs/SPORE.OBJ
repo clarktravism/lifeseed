@@ -1,0 +1,66 @@
+@SPORE
+#set array 1
+#char 42
+#cycle 5
+
+:loop
+#take ARRAY 1 set Array 1
+#loop^
+:loop0
+#char 7
+#if run :tick die
+/i#loop
+:loop1
+#char 42
+#if run :tick die
+/i#loop
+
+:tick
+#if detect under i 16 water put under i 80 water
+#and end true
+#end
+
+:thud
+#if detect flow player shoot player
+#and die
+#if detect flow object send /flow spore
+#and die
+#if detect flow line color flow purple
+#and die
+#if detect flow water if not water.walkable shove i flow
+#and loop
+#if not blocked flow loop
+#if detect flow passage die
+#if ThisX is 1 die
+#if ThisY is 1 die
+#if ThisX is 60 die
+#if ThisY is 25 die
+#set OBJ1 pget i STEPX
+#if OBJ1 is 0 load i objs\mush_h
+#else load i objs\mush_v
+#end
+
+:shot
+#die
+
+:fire
+#load i objs\firespor
+#end
+
+:wind_n
+#walk n
+#loop
+:wind_s
+#walk s
+#loop
+:wind_e
+#walk e
+#loop
+:wind_w
+#walk w
+#loop
+
+:touch
+#lock
+#shoot player
+#die

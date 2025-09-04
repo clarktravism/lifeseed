@@ -1,0 +1,29 @@
+@GUST
+:loop
+#color i white
+#char 42
+#run :tick
+/i
+#char 15
+#run :tick
+/i
+#color i gray
+#char 42
+#run :tick
+/i
+#char 15
+#run :tick
+/i
+#loop
+:tick
+#send /n wind_n
+#send /s wind_s
+#send /e wind_e
+#send /w wind_w
+#end
+:touch
+#if not ELEMENT is 4 loop
+#if blocked opp seek loop
+#shove i opp seek
+#shove player opp seek
+#loop

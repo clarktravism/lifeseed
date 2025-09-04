@@ -1,0 +1,104 @@
+@PYRE
+#set ARRAY RANDOM 0 5
+:loop
+#if detect under i water sizzle
+#if not ELEMENT is 3 if CONTACT damage player
+:skipplayerburn
+#send /n fire
+#send /s fire
+#send /e fire
+#send /w fire
+#if not detect n line if not detect n dkgray fake skip_n
+#put n red black object
+#load n objs\flame
+:skip_n
+#if not detect s line if not detect s dkgray fake skip_s
+#put s red black object
+#load s objs\flame
+:skip_s
+#if not detect e line if not detect e dkgray fake skip_e
+#put e red black object
+#load e objs\flame
+:skip_e
+#if not detect w line if not detect w dkgray fake skip_w
+#put w red black object
+#load w objs\flame
+:skip_w
+#take ARRAY 1 set Array 5
+#loop^
+:loop0
+:loop2
+:loop4
+'#char 168
+#char 178
+/i#loop
+:loop1
+#color i DkRed
+'#char 173
+#char 177
+#run :ember
+/i#loop
+:loop3
+#color i Yellow
+'#char 173
+#char 177
+/i#loop
+:loop5
+#color i Red
+'#char 173
+#char 177
+/i#loop
+
+'touch
+#if not ELEMENT is 3 loop
+#run :ember_remove
+#give Local1 1
+#set FLAMES Local1
+#die item
+#loop
+:move
+#shove i opp seek
+#shove player opp seek
+#loop
+:sizzle
+:splash
+:shot
+#lock
+#run :ember_remove
+#color i Gray
+#char 250
+/i#char 249
+/i#char 248
+/i#die
+:wind_n
+#if not canput n loop
+#else duplicate i n
+#loop
+:wind_s
+#if not canput s loop
+#else duplicate i s
+#loop
+:wind_e
+#if not canput e loop
+#else duplicate i e
+#loop
+:wind_w
+#if not canput w loop
+#else duplicate i w
+#loop
+:ember
+#if canput n put n dkred black fake
+#if canput s put s dkred black fake
+#if canput e put e dkred black fake
+#if canput w put w dkred black fake
+#end
+:ember_remove
+#if detect n fake put n black empty
+#else if detect under n fake put under n black empty
+#if detect s fake put s black empty
+#else if detect under s fake put under s black empty
+#if detect e fake put e black empty
+#else if detect under e fake put under e black empty
+#if detect w fake put w black empty
+#else if detect under w fake put under w black empty
+#end

@@ -1,0 +1,56 @@
+@FLAME
+#color i Red black
+#char 173
+#put under i black empty
+#set ARRAY 4
+:loop
+#if not ELEMENT is 3 if CONTACT damage player
+#send /n fire
+#send /s fire
+#send /e fire
+#send /w fire
+#take ARRAY 1 done
+#loop^
+:loop0
+:loop2
+:loop4
+#char 168
+/i#loop
+:loop1
+#color i Yellow
+#char 173
+/i#loop
+:loop3
+#color i DkRed
+#char 173
+/i#loop
+
+:done
+#if detect n object skip_n
+#if not detect n line if not detect n dkgray fake skip_n
+#put n red black object
+#load n objs\flame
+:skip_n
+#if detect s object skip_s
+#if not detect s line if not detect s dkgray fake skip_s
+#put s red black object
+#load s objs\flame
+:skip_s
+#if detect e object skip_e
+#if not detect e line if not detect e dkgray fake skip_e
+#put e red black object
+#load e objs\flame
+:skip_e
+#if detect w object skip_w
+#if not detect w line if not detect w dkgray fake skip_w
+#put w red black object
+#load w objs\flame
+:skip_w
+#lock
+#color i dkgray
+#char 58
+/i#char 249
+/i#die
+
+:spore
+/i#loop

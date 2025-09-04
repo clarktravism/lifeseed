@@ -1,0 +1,53 @@
+@FIRESPORE
+#set array 3
+#char 42
+#color i red
+#cycle 5
+
+:loop
+#if detect under i water die
+#if detect opp flow dkgray fake
+#take ARRAY 1 set Array 3
+#loop^
+:loop0
+:loop2
+#char 7
+/i#loop
+:loop1
+#char 42
+#color i dkred
+/i#loop
+:loop3
+#char 42
+#color i red
+/i#loop
+
+:wind_n
+#walk n
+#loop
+:wind_s
+#walk s
+#loop
+:wind_e
+#walk e
+#loop
+:wind_w
+#walk w
+#loop
+
+:thud
+#if detect flow object send /flow fire
+#if detect flow player if not ELEMENT 3 shoot player
+#if not detect flow line skip
+#put flow red black object
+#load flow objs\flame
+:skip
+#die
+
+:ignite
+#put opp flow red black object
+#load opp flow objs\flame
+#loop
+
+:shot
+#die
