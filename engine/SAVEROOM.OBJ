@@ -1,0 +1,4 @@
+@INPUT
+#run RDATA
+#SET keys.save.bind S
+#SET HIDELINE3

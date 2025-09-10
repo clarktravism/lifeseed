@@ -20,6 +20,11 @@
 #send /s wind_s
 #send /e wind_e
 #send /w wind_w
+#if ELEMENT is 4 end
+#if detect n player if not blocked by 0 -2 shove player n
+#if detect s player if not blocked by 0 2 shove player s
+#if detect e player if not blocked by 2 0 shove player e
+#if detect w player if not blocked by -2 0 shove player w
 #end
 :touch
 #if not ELEMENT is 4 loop

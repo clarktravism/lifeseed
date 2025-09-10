@@ -1,0 +1,13 @@
+@PASSAGE
+'OBJ1 - Dest.BoardID
+'OBJ2 - Dest.X
+'OBJ3 - Dest.Y
+#end
+:touch
+#lock
+#lock player
+#send all:board_change
+#run engine\wrdata
+/i
+#LOADBOARD OBJ1 OBJ2 OBJ3
+#end

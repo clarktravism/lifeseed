@@ -1,33 +1,33 @@
 @INPUT
-'1 = Earth; 2 = Water; 3 = Fire; 4 = Air
-:enter
-#set FLAMES Local1
+#run RDATA
+#clear keys.save.bind
+
 :elementchange
 #set ARRAY ELEMENT
 #ele^
 :ele1
-#change player Brown Black player
-#set boulder.pushable 1
+#change player Yellow Black player
+#clear water.pwalkable 
 #set hideline8
 #set ammo 0
-#end
+#loop
 :ele2
 #change player White Black player
-#set boulder.pushable 0
+#set water.pwalkable
 #set hideline8
-#end
+#loop
 :ele3
 #change player Red Black player
-#set boulder.pushable 0
+#clear water.pwalkable
 #clear hideline8
 #set ammo 0
-#end
+#loop
 :ele4
 #change player Cyan Black player
-#set boulder.pushable 0
+#clear water.pwalkable
 #set hideline8
 #set ammo 0
-#end
+#loop
 
 :shiftup
 #shiftup^
@@ -40,25 +40,29 @@
 
 'EARTH
 :shiftup1
-#if detect to player n boulder put to player n normal
-#else if detect to player n normal put to player n boulder
-#else if not blocked to player n if detect to player s boulder shove to player s n
-#end
+#if E_SHAPER if detect to player n boulder put to player n normal
+#else if E_SHAPER if detect to player n normal put to player n boulder
+#else if STONE_GRIP if not blocked to player n if detect to player s boulder shove to player s n
+#and moved
+#loop
 :shiftdown1
-#if detect to player s boulder put to player s normal
-#else if detect to player s normal put to player s boulder
-#else if not blocked to player s if detect to player n boulder shove to player n s
-#end
+#if E_SHAPER if detect to player s boulder put to player s normal
+#else if E_SHAPER if detect to player s normal put to player s boulder
+#else if STONE_GRIP if not blocked to player s if detect to player n boulder shove to player n s
+#and moved
+#loop
 :shiftright1
-#if detect to player e boulder put to player e normal
-#else if detect to player e normal put to player e boulder
-#else if not blocked to player e if detect to player w boulder shove to player w e
-#end
+#if E_SHAPER if detect to player e boulder put to player e normal
+#else if E_SHAPER if detect to player e normal put to player e boulder
+#else if STONE_GRIP if not blocked to player e if detect to player w boulder shove to player w e
+#and moved
+#loop
 :shiftleft1
-#if detect to player w boulder put to player w normal
-#else if detect to player w normal put to player w boulder
-#else if not blocked to player w if detect to player e boulder shove to player e w
-#end
+#if E_SHAPER if detect to player w boulder put to player w normal
+#else if E_SHAPER if detect to player w normal put to player w boulder
+#else if STONE_GRIP if not blocked to player w if detect to player e boulder shove to player e w
+#and moved
+#loop
 
 'WATER
 :shiftup2
@@ -67,82 +71,84 @@
 :shiftleft2
 #if detect under player water set ammo 1
 #else if ammo is 0 change player White Black player
-#end
+#loop
 
 'FIRE
 :shiftup3
-#if blocked to player n end
-#put under player dkgray black fake
+#if blocked to player n loop
+#if not detect under player customtext put under player dkgray black fake
 #shove player n
-#end
+#moved
 :shiftdown3
-#if blocked to player s end
-#put under player dkgray black fake
+#if blocked to player s loop
+#if not detect under player customtext put under player dkgray black fake
 #shove player s
-#end
+#moved
 :shiftright3
-#if blocked to player e end
-#put under player dkgray black fake
+#if blocked to player e loop
+#if not detect under player customtext put under player dkgray black fake
 #shove player e
-#end
+#moved
 :shiftleft3
-#if blocked to player w end
-#put under player dkgray black fake
+#if blocked to player w loop
+#if not detect under player customtext put under player dkgray black fake
 #shove player w
-#end
+#moved
 
 'AIR
 :shiftup4
 #send p_gust:touch
-#if not canput to player n end
+#if not canput to player n loop
 #put to player n white object
 #load to player n objs\p_gust
-#end
+#loop
 :shiftdown4
 #send p_gust:touch
-#if not canput to player s end
+#if not canput to player s loop
 #put to player s white object
 #load to player s objs\p_gust
-#end
+#loop
 :shiftright4
 #send p_gust:touch
-#if not canput to player e end
+#if not canput to player e loop
 #put to player e white object
 #load to player e objs\p_gust
-#end
+#loop
 :shiftleft4
 #send p_gust:touch
-#if not canput to player w end
+#if not canput to player w loop
 #put to player w white object
 #load to player w objs\p_gust
-#end
+#loop
 
 :up
 :down
 :left
 :right
-#if ELEMENT is 3 if detect under player water water_hurt
+:moved
 #if not ELEMENT is 2 if detect under player 80 water poison_hurt
-#if not ELEMENT is 2 end
+#if not ELEMENT is 2 loop
 #if detect under player 80 water put under player 16 water
 #if detect under player water set ammo 1
 #and change player Blue Black player
-#end
-
-:water_hurt
-#lock
-#set OBJ1 PLAYERX
-#set OBJ2 PLAYERY
-#shoot player
-#put at OBJ1 OBJ2 16 water
-#unlock
-#end
+#loop
 
 :poison_hurt
-#lock
-#set OBJ1 PLAYERX
-#set OBJ2 PLAYERY
+#lock player
 #shoot player
-#put at OBJ1 OBJ2 80 water
-#unlock
+#reload_board
+
+:retry
+:reload_board
+#lock
+#lock player
+#LOADBOARD BOARDID
 #end
+
+:board_change
+#lock
+#end
+
+:loop
+#if NOT HEALTH IS 100 reload_board
+/i#loop

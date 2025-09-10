@@ -16,21 +16,29 @@
 /i#loop
 
 :tick
-#if detect under i 16 water put under i 80 water
+#if detect flow player shoot player
 #and end true
+#if detect flow object send /flow spore
+#and end true
+#if detect flow line color flow purple
+#and end true
+#if detect under i 16 water put under i 80 water
 #end
 
 :thud
+#if detect flow water shove i flow
+#and loop
+#if detect flow breakable shoot flow
+#and die
 #if detect flow player shoot player
 #and die
 #if detect flow object send /flow spore
 #and die
 #if detect flow line color flow purple
 #and die
-#if detect flow water if not water.walkable shove i flow
-#and loop
 #if not blocked flow loop
-#if detect flow passage die
+#if detect under i water die
+#if not detect flow normal die
 #if ThisX is 1 die
 #if ThisY is 1 die
 #if ThisX is 60 die
@@ -61,6 +69,5 @@
 #loop
 
 :touch
-#lock
 #shoot player
 #die

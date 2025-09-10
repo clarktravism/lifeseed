@@ -1,6 +1,6 @@
 @FLAME
 #color i Red black
-#char 173
+#char 238
 #put under i black empty
 #set ARRAY 4
 :loop
@@ -14,18 +14,20 @@
 :loop0
 :loop2
 :loop4
-#char 168
+#char 237
 /i#loop
 :loop1
 #color i Yellow
-#char 173
+#char 238
 /i#loop
 :loop3
 #color i DkRed
-#char 173
+#char 238
 /i#loop
 
 :done
+#zap loop
+:loop
 #if detect n object skip_n
 #if not detect n line if not detect n dkgray fake skip_n
 #put n red black object
@@ -46,6 +48,7 @@
 #put w red black object
 #load w objs\flame
 :skip_w
+:shot
 #lock
 #color i dkgray
 #char 58

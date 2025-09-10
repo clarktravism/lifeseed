@@ -2,7 +2,7 @@
 #set ARRAY RANDOM 0 5
 :loop
 #if detect under i water sizzle
-#if not ELEMENT is 3 if CONTACT damage player
+#if not ELEMENT is 3 if CONTACT shoot player
 :skipplayerburn
 #send /n fire
 #send /s fire
@@ -87,10 +87,10 @@
 #else duplicate i w
 #loop
 :ember
-#if canput n put n dkred black fake
-#if canput s put s dkred black fake
-#if canput e put e dkred black fake
-#if canput w put w dkred black fake
+#if detect n empty put n dkred black fake
+#if detect s empty put s dkred black fake
+#if detect e empty put e dkred black fake
+#if detect w empty put w dkred black fake
 #end
 :ember_remove
 #if detect n fake put n black empty

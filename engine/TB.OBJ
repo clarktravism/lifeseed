@@ -1,0 +1,19 @@
+@TB
+#set WICK -1
+#set other.torchratioY 4
+#set other.torchsize 5
+#set OBJ1 0
+:loop
+#give other.torchsize other.torchsize
+#give OBJ1 1
+#if OBJ1 is 10 stop
+/i#loop
+:stop
+#clear ISDARK
+#set WICK 0
+#set other.torchsize 0
+#end
+:enter
+#set WICK 0
+#set other.torchsize 0
+#end

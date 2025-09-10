@@ -1,0 +1,16 @@
+@typer
+#set obj2 thisx
+#set obj3 thisy
+#give obj3 2
+#end
+:next
+'#set ARRAY pget n color
+'#write n white black ^
+'#put n whitetext
+#put n customtext
+#try e eol
+#next
+:eol
+/i/i/i/i/i
+#send /at obj2 obj3 next
+#end

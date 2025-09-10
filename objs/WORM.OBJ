@@ -1,0 +1,55 @@
+@WORM
+'ARRAY = direction = Up, Down, Right, Left
+:loop
+#zap loop
+#run :tick
+/i
+#turn^
+:loop
+#restore loop
+#run :tick
+/i
+#run :tick
+#move^
+
+:tick
+#if contact shoot player
+#send /n worm
+#send /s worm
+#send /e worm
+#send /w worm
+#end
+
+:turn0
+#if detect e normal set array 2
+#else if not detect n normal set array 3
+#loop
+:turn1
+#if detect w normal set array 3
+#else if not detect s normal set array 2
+#loop
+:turn2
+#if detect s normal set array 1
+#else if not detect e normal set array 0
+#loop
+:turn3
+#if detect n normal set array 0
+#else if not detect w normal set array 1
+#loop
+
+:move0
+#if not detect n normal loop
+#else shove i n
+#loop
+:move1
+#if not detect s normal loop
+#else shove i s
+#loop
+:move2
+#if not detect e normal loop
+#else #shove i e
+#loop
+:move3
+#if not detect w normal loop
+#else #shove i w
+#loop

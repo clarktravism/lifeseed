@@ -37,11 +37,15 @@
 
 :thud
 #if detect flow object send /flow fire
-#if detect flow player if not ELEMENT 3 shoot player
+#if detect flow player if not ELEMENT is 3 shoot player
 #if not detect flow line skip
 #put flow red black object
 #load flow objs\flame
 :skip
+#die
+
+:touch
+#if not ELEMENT is 3 shoot player
 #die
 
 :ignite

@@ -1,5 +1,6 @@
 @MUSH
 #char 110
+#walk i
 #color i purple
 #cycle 10
 :loop
@@ -7,12 +8,14 @@
 /i/i/i
 #char 239
 /i/i
+#if detect n player shoot player
 #if not canput n skip
 #put n purple object
 #pset n char 42
 #pset n step n
 #load n objs\spore
 :skip
+#if detect s player shoot player
 #if not canput s loop
 #put s purple object
 #pset s char 42
@@ -20,4 +23,5 @@
 #load s objs\spore
 #loop
 :fire
+:worm
 #die

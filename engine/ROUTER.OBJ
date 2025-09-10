@@ -1,0 +1,19 @@
+@ROUTER
+#run RDATA
+#set ROUTED
+#set ARRAY ELEMENT
+#ele^
+:ele1
+#change player Yellow Black player
+#eledone
+:ele2
+#change player White Black player
+#eledone
+:ele3
+#change player Red Black player
+#eledone
+:ele4
+#change player Cyan Black player
+:eledone
+#board OBJ1 OBJ2 OBJ3
+#end
