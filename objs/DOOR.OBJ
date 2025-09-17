@@ -1,0 +1,13 @@
+@DOOR
+#set ARRAY BOARDID
+:enter
+#if DUL^ unlockdoor
+#end
+:touch
+#if not REDKEY end
+#clear REDKEY
+#set DUL^
+:unlockdoor
+#color i 79
+#char 240
+#load i objs\passage

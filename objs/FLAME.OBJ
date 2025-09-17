@@ -4,7 +4,7 @@
 #put under i black empty
 #set ARRAY 4
 :loop
-#if not ELEMENT is 3 if CONTACT damage player
+#if not ELEMENT is 3 if CONTACT shoot player
 #send /n fire
 #send /s fire
 #send /e fire
@@ -50,6 +50,7 @@
 :skip_w
 :shot
 #lock
+#walk i
 #color i dkgray
 #char 58
 /i#char 249
@@ -57,3 +58,23 @@
 
 :spore
 /i#loop
+
+:wind_e
+#walk e
+#set ARRAY 4
+#loop
+
+:wind_n
+#walk n
+#set ARRAY 4
+#loop
+
+:wind_s
+#walk s
+#set ARRAY 4
+#loop
+
+:wind_w
+#walk w
+#set ARRAY 4
+#loop

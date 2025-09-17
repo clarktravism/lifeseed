@@ -15,6 +15,7 @@
 #run :tick
 /i
 #loop
+
 :tick
 #send /n wind_n
 #send /s wind_s
@@ -26,9 +27,22 @@
 #if detect e player if not blocked by 2 0 shove player e
 #if detect w player if not blocked by -2 0 shove player w
 #end
+
 :touch
 #if not ELEMENT is 4 loop
 #if blocked opp seek loop
 #shove i opp seek
 #shove player opp seek
 #loop
+
+:wind_e
+:wind_n
+:wind_s
+:wind_w
+#lock
+#color i dkgray
+#char 43
+/i
+#char 249
+/i
+#die

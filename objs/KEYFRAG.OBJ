@@ -1,0 +1,14 @@
+@KEYFRAG
+:enter
+#set ARRAY BOARDID
+#if DUL^ die
+#end
+:touch
+#give Local1 1
+#take Local1 3 partkey
+#set REDKEY
+Completed Key
+#die item
+:partkey
+Key Fragment
+#die item

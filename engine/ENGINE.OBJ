@@ -1,15 +1,16 @@
-@INPUT
-#run RDATA
-#clear keys.save.bind
-
+@ENGINE
 :elementchange
 #set ARRAY ELEMENT
+#pset w ARRAY ELEMENT
 #ele^
+
 :ele1
 #change player Yellow Black player
 #clear water.pwalkable 
 #set hideline8
 #set ammo 0
+#if STONESHAPE set sidebar.shoot.msg SHAPE
+#else clear sidebar.shoot.msg
 #loop
 :ele2
 #change player White Black player
@@ -29,122 +30,6 @@
 #set ammo 0
 #loop
 
-:shiftup
-#shiftup^
-:shiftdown
-#shiftdown^
-:shiftright
-#shiftright^
-:shiftleft
-#shiftleft^
-
-'EARTH
-:shiftup1
-#if E_SHAPER if detect to player n boulder put to player n normal
-#else if E_SHAPER if detect to player n normal put to player n boulder
-#else if STONE_GRIP if not blocked to player n if detect to player s boulder shove to player s n
-#and moved
-#loop
-:shiftdown1
-#if E_SHAPER if detect to player s boulder put to player s normal
-#else if E_SHAPER if detect to player s normal put to player s boulder
-#else if STONE_GRIP if not blocked to player s if detect to player n boulder shove to player n s
-#and moved
-#loop
-:shiftright1
-#if E_SHAPER if detect to player e boulder put to player e normal
-#else if E_SHAPER if detect to player e normal put to player e boulder
-#else if STONE_GRIP if not blocked to player e if detect to player w boulder shove to player w e
-#and moved
-#loop
-:shiftleft1
-#if E_SHAPER if detect to player w boulder put to player w normal
-#else if E_SHAPER if detect to player w normal put to player w boulder
-#else if STONE_GRIP if not blocked to player w if detect to player e boulder shove to player e w
-#and moved
-#loop
-
-'WATER
-:shiftup2
-:shiftdown2
-:shiftright2
-:shiftleft2
-#if detect under player water set ammo 1
-#else if ammo is 0 change player White Black player
-#loop
-
-'FIRE
-:shiftup3
-#if blocked to player n loop
-#if not detect under player customtext put under player dkgray black fake
-#shove player n
-#moved
-:shiftdown3
-#if blocked to player s loop
-#if not detect under player customtext put under player dkgray black fake
-#shove player s
-#moved
-:shiftright3
-#if blocked to player e loop
-#if not detect under player customtext put under player dkgray black fake
-#shove player e
-#moved
-:shiftleft3
-#if blocked to player w loop
-#if not detect under player customtext put under player dkgray black fake
-#shove player w
-#moved
-
-'AIR
-:shiftup4
-#send p_gust:touch
-#if not canput to player n loop
-#put to player n white object
-#load to player n objs\p_gust
-#loop
-:shiftdown4
-#send p_gust:touch
-#if not canput to player s loop
-#put to player s white object
-#load to player s objs\p_gust
-#loop
-:shiftright4
-#send p_gust:touch
-#if not canput to player e loop
-#put to player e white object
-#load to player e objs\p_gust
-#loop
-:shiftleft4
-#send p_gust:touch
-#if not canput to player w loop
-#put to player w white object
-#load to player w objs\p_gust
-#loop
-
-:up
-:down
-:left
-:right
-:moved
-#if not ELEMENT is 2 if detect under player 80 water poison_hurt
-#if not ELEMENT is 2 loop
-#if detect under player 80 water put under player 16 water
-#if detect under player water set ammo 1
-#and change player Blue Black player
-#loop
-
-:poison_hurt
-#lock player
-#shoot player
-#reload_board
-
-:retry
-:reload_board
-#lock
-#lock player
-#LOADBOARD BOARDID
-#end
-
 :board_change
 #lock
 #end
@@ -152,3 +37,9 @@
 :loop
 #if NOT HEALTH IS 100 reload_board
 /i#loop
+
+:reload_board
+#lock
+#lock player
+#LOADBOARD BOARDID
+#end

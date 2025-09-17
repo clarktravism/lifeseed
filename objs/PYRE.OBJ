@@ -47,6 +47,10 @@
 #color i Red
 '#char 173
 #char 177
+#restore wind_e
+#restore wind_n
+#restore wind_s
+#restore wind_w
 /i#loop
 
 'touch
@@ -70,22 +74,36 @@
 /i#char 249
 /i#char 248
 /i#die
+
 :wind_n
+#zap wind_n
 #if not canput n loop
-#else duplicate i n
+#put n red object
+#load n objs\flame
+#pset n step n
 #loop
 :wind_s
+#zap wind_s
 #if not canput s loop
-#else duplicate i s
+#put s red object
+#load s objs\flame
+#pset s step s
 #loop
 :wind_e
+#zap wind_e
 #if not canput e loop
-#else duplicate i e
+#put e red object
+#load e objs\flame
+#pset e step e
 #loop
 :wind_w
+#zap wind_w
 #if not canput w loop
-#else duplicate i w
+#put w red object
+#load w objs\flame
+#pset w step w
 #loop
+
 :ember
 #if detect n empty put n dkred black fake
 #if detect s empty put s dkred black fake
